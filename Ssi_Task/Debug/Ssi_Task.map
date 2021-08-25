@@ -1,0 +1,260 @@
+******************************************************************************
+                  TI ARM Linker PC v18.12.7                    
+******************************************************************************
+>> Linked Wed Aug 25 12:43:40 2021
+
+OUTPUT FILE NAME:   <Ssi_Task.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000ea1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00000f42  0003f0be  R  X
+  SRAM                  20000000   00008000  0000023e  00007dc2  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000f48   00000f48    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000ca6   00000ca6    r-x .text
+  00000f18    00000f18    00000030   00000030    r-- .cinit
+20000000    20000000    0000023e   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+  20000200    20000200    00000028   00000000    rw- .bss
+  20000228    20000228    00000016   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00000ca6     
+                  0000026c    00000470     UART_Prog.obj (.text)
+                  000006dc    000003cc     SSI_Prog.obj (.text)
+                  00000aa8    000002b0     main.obj (.text)
+                  00000d58    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000df4    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000e5c    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000ea0    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000ed4    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000ef0    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000efe    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00000f0a    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000f0e    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000f18    00000030     
+                  00000f18    0000000c     (__TI_handler_table)
+                  00000f24    00000004     --HOLE-- [fill = 0]
+                  00000f28    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000f30    00000008     (.cinit..data.load) [load image, compression = lzss]
+                  00000f38    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000200    00000028     UNINITIALIZED
+                  20000200    00000014     (.common:SsiConfigurations)
+                  20000214    00000010     (.common:Uart0Configurations)
+                  20000224    00000004     (.common:delay)
+
+.data      0    20000228    00000016     UNINITIALIZED
+                  20000228    00000010     SSI_Prog.obj (.data)
+                  20000238    00000004     UART_Prog.obj (.data)
+                  2000023c    00000002     main.obj (.data)
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       main.obj                       688    0         42     
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         700    620       42     
+                                                              
+    .\Drivers\SSI\
+       SSI_Prog.obj                   972    0         16     
+    +--+------------------------------+------+---------+---------+
+       Total:                         972    0         16     
+                                                              
+    .\Drivers\UART\
+       UART_Prog.obj                  1136   0         4      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1136   0         4      
+                                                              
+    C:\ti\ccs930\ccs\tools\compiler\ti-cgt-arm_18.12.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156    0         0      
+       copy_decompress_lzss.c.obj     104    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            52     0         0      
+       copy_zero_init.c.obj           28     0         0      
+       copy_decompress_none.c.obj     14     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         430    0         0      
+                                                              
+       Stack:                         0      0         512    
+       Linker Generated:              0      44        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   3238   664       574    
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000f38 records: 2, size/record: 8, table size: 16
+	.bss: load addr=00000f28, load size=00000008 bytes, run addr=20000200, run size=00000028 bytes, compression=zero_init
+	.data: load addr=00000f30, load size=00000008 bytes, run addr=20000228, run size=00000016 bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000f18 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+2000023c  ByteReceievd                  
+00000f0f  C$$EXIT                       
+00000c6d  Delay_MS                      
+00000eff  ResetISR                      
+000006dd  SSI0_ISR                      
+00000737  SSI1_ISR                      
+00000791  SSI2_ISR                      
+000007eb  SSI3_ISR                      
+00000845  Ssi0_SetCallBack              
+00000855  Ssi1_SetCallBack              
+00000865  Ssi2_SetCallBack              
+00000875  Ssi3_SetCallBack              
+2000023d  SsiByteReceived               
+20000200  SsiConfigurations             
+0000088d  Ssi_Init                      
+000009db  Ssi_Receive                   
+00000a11  Ssi_ReceiveIT                 
+000009b9  Ssi_SendString                
+0000097f  Ssi_Transmit                  
+0000026d  UART0_ISR                     
+00000bf7  UART_ReceiveInterrupt         
+20000214  Uart0Configurations           
+000004a9  Uart0_SetCallBack             
+00000327  Uart_Init                     
+00000631  Uart_Receive                  
+000004c1  Uart_ReceiveIT                
+000005eb  Uart_SendString               
+0000055f  Uart_Transmit                 
+20000200  __STACK_END                   
+00000200  __STACK_SIZE                  
+20000200  __STACK_TOP                   
+00000f38  __TI_CINIT_Base               
+00000f48  __TI_CINIT_Limit              
+00000f18  __TI_Handler_Table_Base       
+00000f24  __TI_Handler_Table_Limit      
+00000e5d  __TI_auto_init_nobinit_nopinit
+00000df5  __TI_decompress_lzss          
+00000ef1  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00000ed5  __TI_zero_init_nomemset       
+00000d59  __aeabi_memcpy                
+00000d59  __aeabi_memcpy4               
+00000d59  __aeabi_memcpy8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000000  __stack                       
+00000ea1  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00000f0b  _system_pre_init              
+00000f0f  abort                         
+ffffffff  binit                         
+20000224  delay                         
+00000000  g_pfnVectors                  
+00000aa9  main                          
+00000d59  memcpy                        
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+00000200  __STACK_SIZE                  
+0000026d  UART0_ISR                     
+00000327  Uart_Init                     
+000004a9  Uart0_SetCallBack             
+000004c1  Uart_ReceiveIT                
+0000055f  Uart_Transmit                 
+000005eb  Uart_SendString               
+00000631  Uart_Receive                  
+000006dd  SSI0_ISR                      
+00000737  SSI1_ISR                      
+00000791  SSI2_ISR                      
+000007eb  SSI3_ISR                      
+00000845  Ssi0_SetCallBack              
+00000855  Ssi1_SetCallBack              
+00000865  Ssi2_SetCallBack              
+00000875  Ssi3_SetCallBack              
+0000088d  Ssi_Init                      
+0000097f  Ssi_Transmit                  
+000009b9  Ssi_SendString                
+000009db  Ssi_Receive                   
+00000a11  Ssi_ReceiveIT                 
+00000aa9  main                          
+00000bf7  UART_ReceiveInterrupt         
+00000c6d  Delay_MS                      
+00000d59  __aeabi_memcpy                
+00000d59  __aeabi_memcpy4               
+00000d59  __aeabi_memcpy8               
+00000d59  memcpy                        
+00000df5  __TI_decompress_lzss          
+00000e5d  __TI_auto_init_nobinit_nopinit
+00000ea1  _c_int00_noargs               
+00000ed5  __TI_zero_init_nomemset       
+00000ef1  __TI_decompress_none          
+00000eff  ResetISR                      
+00000f0b  _system_pre_init              
+00000f0f  C$$EXIT                       
+00000f0f  abort                         
+00000f18  __TI_Handler_Table_Base       
+00000f24  __TI_Handler_Table_Limit      
+00000f38  __TI_CINIT_Base               
+00000f48  __TI_CINIT_Limit              
+20000000  __stack                       
+20000200  SsiConfigurations             
+20000200  __STACK_END                   
+20000200  __STACK_TOP                   
+20000214  Uart0Configurations           
+20000224  delay                         
+2000023c  ByteReceievd                  
+2000023d  SsiByteReceived               
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[59 symbols]
