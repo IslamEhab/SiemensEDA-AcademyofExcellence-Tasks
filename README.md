@@ -3,3 +3,4 @@ This repo contains all tasks made in "SiemensEDA Academy of Excellence" Internsh
 1. UART Task
 1. SSI Task
 1. I2C Task	
+1. CAN Task
